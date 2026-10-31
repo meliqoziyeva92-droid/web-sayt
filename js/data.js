@@ -190,11 +190,65 @@ addGroup("Alifbo", [
   ...LETTERS.map((l) => ["letter_" + l.id, `${l.letter}. ${l.word}.`])
 ]);
 
-// ---------- O'yin nomlari ----------
-const GAME_NAMES = {
-  count: "Sanash", colors: "Ranglar", shapes: "Shakllar", animals: "Hayvonlar",
-  fruits: "Meva va sabzavotlar", transport: "Transport", food: "Kim nima yeydi?",
-  size: "Katta va kichik", odd: "Ortiqchasini top", memory: "Juftini top",
-  manners: "Odob va xavfsizlik", letters: "Alifbo"
-};
-addGroup("O'yin nomlari", Object.entries(GAME_NAMES).map(([id, n]) => ["name_" + id, n]));
+// =====================================================================
+//  TAYYORLOV GURUHI (6–7 yosh) — maktabga tayyorlov o'yinlari
+// =====================================================================
+
+// ---------- Qo'shish va ayirish ----------
+const MATH_ITEMS = ["🍎", "🍐", "🎈", "⭐", "🐤", "🍬", "🌸", "🧁"];
+addGroup("Qo'shish va ayirish", [
+  ["math_plus", "Qo'shamiz! Nechta bo'ldi?"],
+  ["math_minus", "Ayiramiz! Nechta qoldi?"]
+]);
+
+// ---------- Birinchi harf ----------
+// "Ng" so'z boshida kelmaydi, shuning uchun bu o'yinga kirmaydi
+const FIRST_LETTERS = LETTERS.filter((l) => l.letter !== "Ng");
+addGroup("Birinchi harf", FIRST_LETTERS.map((l) =>
+  ["first_" + l.id, `${l.word}. ${l.word} qaysi harf bilan boshlanadi?`]));
+
+// ---------- Ketma-ketlik (naqsh) ----------
+const PATTERN_SETS = [
+  ["🔴", "🔵", "🟢", "🟡"],
+  ["🍎", "🍌", "🍇", "🍐"],
+  ["⭐", "🌙", "☀️", "☁️"],
+  ["🐶", "🐱", "🐰", "🐻"],
+  ["🔺", "🟦", "🟣", "🔶"]
+];
+const PATTERN_TYPES = ["AB", "AAB", "ABB", "ABC"];
+addGroup("Ketma-ketlik", [["pattern_q", "Keyingisi qaysi? Naqshni davom ettir!"]]);
+
+// ---------- Sonlarni taqqoslash ----------
+addGroup("Sonlarni taqqoslash", [
+  ["num_big", "Qaysi son katta?"],
+  ["num_small", "Qaysi son kichik?"]
+]);
+
+// ---------- Fasllar ----------
+const SEASONS = [
+  { id: "qish", pic: "⛄❄️", text: "Qishni top! Qor yog'adi, sovuq bo'ladi." },
+  { id: "bahor", pic: "🌷🌱", text: "Bahorni top! Gullar ochiladi." },
+  { id: "yoz", pic: "☀️🍉", text: "Yozni top! Havo issiq bo'ladi." },
+  { id: "kuz", pic: "🍂🍁", text: "Kuzni top! Barglar sarg'ayib to'kiladi." }
+];
+addGroup("Fasllar", SEASONS.map((s) => ["season_" + s.id, s.text]));
+
+// ---------- Kasblar ----------
+const PROFESSIONS = [
+  { id: "shifokor", emoji: "👩‍⚕️", text: "Shifokorni top! U kasallarni davolaydi." },
+  { id: "oshpaz", emoji: "👨‍🍳", text: "Oshpazni top! U mazali ovqat pishiradi." },
+  { id: "otochiruvchi", emoji: "👨‍🚒", text: "O't o'chiruvchini top! U olovni o'chiradi." },
+  { id: "politsiya", emoji: "👮", text: "Politsiyachini top! U tartibni saqlaydi." },
+  { id: "quruvchi", emoji: "👷", text: "Quruvchini top! U uy quradi." },
+  { id: "oqituvchi", emoji: "👩‍🏫", text: "O'qituvchini top! U maktabda dars beradi." },
+  { id: "dehqon", emoji: "🧑‍🌾", text: "Dehqonni top! U yerga ekin ekadi." },
+  { id: "uchuvchi", emoji: "🧑‍✈️", text: "Uchuvchini top! U samolyot haydaydi." },
+  { id: "rassom", emoji: "👩‍🎨", text: "Rassomni top! U rasm chizadi." },
+  { id: "kosmonavt", emoji: "🧑‍🚀", text: "Kosmonavtni top! U koinotga uchadi." }
+];
+addGroup("Kasblar", PROFESSIONS.map((p) => ["prof_" + p.id, p.text]));
+
+// ---------- Maktabga tayyorlanamiz ----------
+const SCHOOL_ITEMS = ["🎒", "📚", "✏️", "📏", "🖍️", "📓", "✂️"];
+const NOT_SCHOOL_ITEMS = ["🧸", "🍭", "🎮", "⚽", "🛝", "🎈", "🪀", "🍦"];
+addGroup("Maktabga tayyorlanamiz", [["school_q", "Maktabga qaysi birini olib boramiz?"]]);

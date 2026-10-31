@@ -207,11 +207,122 @@ const GAMES = [
       });
       big.onclick = () => { big.hidden = true; Voice.stop(); };
     }
+  },
+  // ================= TAYYORLOV GURUHI (6–7 yosh) =================
+  {
+    id: "math", icon: "➕", title: "Qo'shish va ayirish", sub: "10 gacha misollar", tag: "6-7 yosh",
+    theme: "yellow", cat: "tayyor",
+    round() {
+      const item = R.one(MATH_ITEMS);
+      const plus = Math.random() < 0.55;
+      let a, b, ans, visual;
+      const row = (n, cls = "") => `<span class="m-group">${Array.from({ length: n },
+        () => `<span class="m-item ${cls}">${item}</span>`).join("")}</span>`;
+      if (plus) {
+        a = R.int(5) + 1; b = R.int(Math.min(5, 10 - a)) + 1; ans = a + b;
+        visual = `<div class="math">${row(a)}<span class="m-op">+</span>${row(b)}<span class="m-op">=</span><span class="m-q">?</span></div>`;
+      } else {
+        a = R.int(6) + 3; b = R.int(a - 1) + 1; ans = a - b;
+        visual = `<div class="math">${row(a - b)}${row(b, "gone")}<span class="m-op">=</span><span class="m-q">?</span></div>`;
+      }
+      const opts = new Set([ans]);
+      while (opts.size < 3) {
+        const v = ans + R.one([-2, -1, 1, 2]);
+        if (v >= 0 && v <= 10) opts.add(v);
+      }
+      UI.ask({
+        prompt: [plus ? "math_plus" : "math_minus"],
+        visual,
+        options: R.shuffle([...opts]).map((v) => ({
+          html: `<span class="num">${v}</span>`, ok: v === ans, after: v > 0 ? ["n" + v] : []
+        }))
+      });
+    }
+  },
+  {
+    id: "first", icon: "🅰️", title: "Birinchi harf", sub: "So'z qaysi harfdan boshlanadi?", tag: "6-7 yosh",
+    theme: "pink", cat: "tayyor",
+    round() {
+      const target = pickTarget("first", FIRST_LETTERS);
+      const others = R.pick(FIRST_LETTERS.filter((l) => l.letter[0] !== target.letter[0]), 2);
+      UI.ask({
+        prompt: ["first_" + target.id],
+        visual: `<div class="big-pic bounce">${target.emoji}</div>`,
+        options: R.shuffle([target, ...others]).map((l) => ({
+          html: `<span class="letter-ans">${l.letter}</span>`, ok: l === target
+        }))
+      });
+    }
+  },
+  {
+    id: "pattern", icon: "🔴", title: "Ketma-ketlik", sub: "Naqshni davom ettir", tag: "6-7 yosh",
+    theme: "blue", cat: "tayyor",
+    round() {
+      const set = R.pick(R.one(PATTERN_SETS), 3);
+      const type = R.one(PATTERN_TYPES);
+      const unit = [...type].map((ch) => set[ch.charCodeAt(0) - 65]);
+      const seq = [];
+      while (seq.length < 6 + R.int(2)) seq.push(unit[seq.length % unit.length]);
+      const next = unit[seq.length % unit.length];
+      const used = [...new Set(unit)];
+      const opts = R.shuffle([...new Set([next, ...R.shuffle(used), ...set])].slice(0, 3));
+      UI.ask({
+        prompt: ["pattern_q"],
+        visual: `<div class="pattern">${seq.map((e) => `<span>${e}</span>`).join("")}<span class="m-q">?</span></div>`,
+        options: R.shuffle(opts).map((e) => ({ html: emo(e), ok: e === next }))
+      });
+    }
+  },
+  {
+    id: "compare", icon: "⚖️", title: "Qaysi son katta?", sub: "Sonlarni taqqoslash", tag: "6-7 yosh",
+    theme: "brown", cat: "tayyor",
+    round() {
+      const [a, b] = R.pick([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2);
+      const big = Math.random() < 0.5;
+      const ans = big ? Math.max(a, b) : Math.min(a, b);
+      UI.ask({
+        prompt: [big ? "num_big" : "num_small"],
+        options: [a, b].map((v) => ({
+          html: `<span class="num">${v}</span><span class="dots">${"●".repeat(v)}</span>`,
+          ok: v === ans, after: ["n" + v]
+        }))
+      });
+    }
+  },
+  {
+    id: "seasons", icon: "🍂", title: "Fasllar", sub: "Qish, bahor, yoz, kuz", tag: "6-7 yosh",
+    theme: "yellow", cat: "tayyor",
+    round() {
+      const target = pickTarget("seasons", SEASONS);
+      UI.ask({
+        prompt: ["season_" + target.id],
+        options: R.shuffle(SEASONS).map((s) => ({
+          html: `<span class="emo season">${s.pic}</span>`, ok: s === target
+        }))
+      });
+    }
+  },
+  {
+    id: "professions", icon: "👩‍⚕️", title: "Kasblar", sub: "Kim nima ish qiladi?", tag: "6-7 yosh",
+    theme: "pink", cat: "tayyor",
+    round: findGame("professions", PROFESSIONS, "prof_", (p) => emo(p.emoji), 3)
+  },
+  {
+    id: "school", icon: "🎒", title: "Maktabga tayyorlanamiz", sub: "Maktab buyumlari", tag: "6-7 yosh",
+    theme: "blue", cat: "tayyor",
+    round() {
+      const ok = R.one(SCHOOL_ITEMS);
+      UI.ask({
+        prompt: ["school_q"],
+        options: R.shuffle([ok, ...R.pick(NOT_SCHOOL_ITEMS, 2)]).map((e) => ({ html: emo(e), ok: e === ok }))
+      });
+    }
   }
 ];
 
 const CATEGORY_NAMES = {
   aql: "🧠 Aqliy rivojlanish",
   til: "🗣️ Til va nutq",
-  ijod: "🎨 Ijod va tarbiya"
+  ijod: "🎨 Ijod va tarbiya",
+  tayyor: "🎒 Tayyorlov guruhi (6–7 yosh)"
 };

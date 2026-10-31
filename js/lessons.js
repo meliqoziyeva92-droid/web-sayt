@@ -158,6 +158,73 @@ const LESSONS = [
       "Yakun: sevimli qo'shiq birgalikda kuylanadi."
     ],
     end: "Bolalar qaysi cholg'u yoqqanini aytadilar."
+  },
+  {
+    id: 11, age: "tayyorlov", ageLabel: "6–7 yosh", icon: "➕",
+    area: "Matematika", title: "Qo'shish va ayirish (10 gacha)",
+    goal: "Predmetlar yordamida 10 gacha qo'shish va ayirishni o'rgatish, «+», «−», «=» belgilari bilan tanishtirish.",
+    materials: ["Sanoq tayoqchalari", "Raqamli kartochkalar 0–10", "«+», «−», «=» belgi kartochkalari", "Olma muljlari"],
+    duration: "30 daqiqa",
+    steps: [
+      "Kirish: Topishmoq-masala — «Savatda 3 ta olma bor edi, oyim yana 2 ta qo'ydi. Nechta bo'ldi?»",
+      "Ko'rgazmali tushuntirish: olmalarni doskaga qo'yib, «+» belgisini ko'rsatish: 3 + 2 = 5.",
+      "Ayirish: «5 ta olmadan 1 tasini quyoncha yedi. Nechta qoldi?» — «−» belgisi bilan 5 − 1 = 4.",
+      "Juftlikda ishlash: bolalar tayoqchalar bilan tarbiyachi aytgan misollarni yechadilar.",
+      "Dinamik pauza: «Nechta qarsak — shuncha sakrash» (2 + 1 = 3 marta sakrash).",
+      "Interaktiv mustahkamlash: saytdagi «Qo'shish va ayirish» o'yini (planshet yoki proyektorda).",
+      "Yakun: har bir bola bitta misol tuzib, do'stiga beradi."
+    ],
+    end: "Eng ko'p misol yechgan bolalar yulduzcha oladi."
+  },
+  {
+    id: 12, age: "tayyorlov", ageLabel: "6–7 yosh", icon: "🗣️",
+    area: "Savod o'rgatish", title: "So'z va bo'g'in",
+    goal: "So'zlarni bo'g'inlarga ajratish, so'zdagi birinchi tovushni aniqlash, fonematik eshitishni rivojlantirish.",
+    materials: ["Rasmli kartochkalar (olma, kitob, tarvuz, ari)", "Doira bilan baraban yoki qarsak", "Uch xil rangli fishkalar"],
+    duration: "30 daqiqa",
+    steps: [
+      "Kirish: «Sehrli sandiq» — sandiqdan rasmlar chiqariladi va nomlanadi.",
+      "Bo'g'inlarga ajratish: so'zni qarsak bilan aytish — «ol-ma» (2 qarsak), «tar-vuz» (2), «ari» (a-ri, 2), «ki-tob» (2), «fil» (1).",
+      "O'yin «Nechta qarsak?»: tarbiyachi so'z aytadi, bolalar bo'g'in sonicha qarsak chaladi.",
+      "Birinchi tovush: «Olma qaysi tovush bilan boshlanadi? — O». Bolalar shu tovushga yana so'z topadi.",
+      "Dinamik pauza: «Tovushni ushla» — «M» tovushi eshitilsa, bolalar o'tirib oladi.",
+      "Interaktiv mustahkamlash: saytdagi «Birinchi harf» o'yini.",
+      "Yakun: har bir bola o'z ismini bo'g'inlarga ajratib aytadi (Ma-di-na, Sar-dor)."
+    ],
+    end: "Bolalar bugun o'rgangan so'zlarini eslab aytadilar."
+  },
+  {
+    id: 13, age: "tayyorlov", ageLabel: "6–7 yosh", icon: "👷",
+    area: "Atrofimizdagi olam", title: "Kasblar olami",
+    goal: "Kasblar va ularning mehnat qurollari bilan tanishtirish, mehnatga hurmat tarbiyalash, kelajak orzulari haqida suhbatlashish.",
+    materials: ["Kasblar tasvirlangan rasmlar", "Mehnat qurollari: shpris (o'yinchoq), cho'mich, bolg'a, mo'yqalam", "Kiyim elementlari: oq xalat, kaska, oshpaz qalpog'i"],
+    duration: "30 daqiqa",
+    steps: [
+      "Kirish: «Ota-onangiz qayerda ishlaydi?» — qisqa suhbat.",
+      "Rasmlar bilan tanishish: shifokor, oshpaz, quruvchi, o'qituvchi, dehqon, o't o'chiruvchi — kim nima ish qiladi?",
+      "Didaktik o'yin «Kimga nima kerak?»: mehnat quroli egasiga topshiriladi (cho'mich — oshpazga).",
+      "Rolli o'yin: bolalar xalat yoki kaska kiyib, kasb egasi bo'lib ko'radi.",
+      "Dinamik pauza: «Kasbni ko'rsat» — tarbiyachi kasb aytadi, bolalar harakat bilan ko'rsatadi.",
+      "Interaktiv mustahkamlash: saytdagi «Kasblar» o'yini.",
+      "Yakun: «Katta bo'lsam, men … bo'laman» — har bir bola orzusini aytadi."
+    ],
+    end: "Bolalar orzu qilgan kasblarini chizib, ko'rgazma tashkil etiladi."
+  },
+  {
+    id: 14, age: "tayyorlov", ageLabel: "6–7 yosh", icon: "🎒",
+    area: "Maktabga tayyorgarlik", title: "Men maktabga boraman",
+    goal: "Maktab, o'quvchi tartib-qoidalari va maktab buyumlari haqida tushuncha berish, maktabga ijobiy munosabat shakllantirish.",
+    materials: ["Portfel", "Daftar, ruchka, qalam, chizg'ich, kitob", "Maktab rasmi", "Qo'ng'iroqcha"],
+    duration: "30 daqiqa",
+    steps: [
+      "Kirish: qo'ng'iroq chalinadi — «Bu qo'ng'iroq qayerda chalinadi?»",
+      "Suhbat: Maktabda nima qilinadi? O'qituvchi kim? Darsda o'zimizni qanday tutamiz (qo'l ko'tarish, jim o'tirish)?",
+      "O'yin «Portfelni yig'amiz»: stolda maktab buyumlari va o'yinchoqlar aralash — bolalar faqat kerakli narsalarni portfelga soladi.",
+      "Dinamik pauza: «Tanaffus» — quvnoq musiqa ostida harakat.",
+      "Rolli o'yin «Dars»: bir bola o'qituvchi, qolganlar o'quvchi — salomlashish, qo'l ko'tarib javob berish.",
+      "Interaktiv mustahkamlash: saytdagi «Maktabga tayyorlanamiz» va «Ketma-ketlik» o'yinlari.",
+      "Yakun: «Maktabda men birinchi bo'lib nimani o'rganmoqchiman?»"
+    ],
+    end: "Bolalar «Mening portfelim» rasmini chizadilar."
   }
 ];
-

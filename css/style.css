@@ -463,3 +463,15 @@ body.speaking .sun-face { animation: talk .35s ease-in-out infinite alternate; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* ---------- Tayyorlov guruhi o'yinlari ---------- */
+.math { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px; }
+.m-group { display: flex; flex-wrap: wrap; gap: 6px; max-width: 280px; justify-content: center; background: var(--cream); border: 3px dashed var(--cream-2); border-radius: 24px; padding: 10px 14px; }
+.m-item { font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.1; position: relative; }
+.m-item.gone { filter: grayscale(1) opacity(.6); }
+.m-item.gone::after { content: "✖"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #e53935; font-size: 1.1em; font-weight: 900; }
+.m-op { font-size: clamp(2.6rem, 6vw, 3.6rem); font-weight: 900; color: var(--pink-deep); }
+.m-q { font-size: clamp(2.6rem, 6vw, 3.6rem); font-weight: 900; color: #fff; background: var(--blue); width: 1.6em; height: 1.6em; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 6px 0 var(--blue-d); animation: pulse 1.6s infinite; }
+.pattern { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(6px, 1.5vw, 14px); font-size: clamp(2.4rem, 6vw, 3.8rem); background: var(--cream); border-radius: 28px; padding: 14px 20px; }
+.letter-ans { font-size: clamp(3.4rem, 8vw, 5rem); font-weight: 900; color: var(--pink-deep); line-height: 1; }
+.answer .emo.season { font-size: clamp(2.4rem, 5vw, 3.6rem); letter-spacing: -4px; }
