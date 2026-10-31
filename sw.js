@@ -1,5 +1,5 @@
 // Oflayn ishlash uchun: fayllarni keshda saqlaydi
-const CACHE = "bogcha-v4";
+const CACHE = "bogcha-v5";
 const FILES = ["./", "index.html", "css/style.css", "js/data.js", "js/lessons.js",
   "js/voice.js", "js/games.js", "js/app.js", "manifest.json", "icon.svg"];
 

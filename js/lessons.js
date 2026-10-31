@@ -196,16 +196,16 @@ const LESSONS = [
   {
     id: 13, age: "tayyorlov", ageLabel: "6–7 yosh", icon: "👷",
     area: "Atrofimizdagi olam", title: "Kasblar olami",
-    goal: "Kasblar va ularning mehnat qurollari bilan tanishtirish, mehnatga hurmat tarbiyalash, kelajak orzulari haqida suhbatlashish.",
+    goal: "Kasblar, ularning mehnat qurollari va ish joylari bilan tanishtirish, mehnatga hurmat tarbiyalash, kelajak orzulari haqida suhbatlashish.",
     materials: ["Kasblar tasvirlangan rasmlar", "Mehnat qurollari: shpris (o'yinchoq), cho'mich, bolg'a, mo'yqalam", "Kiyim elementlari: oq xalat, kaska, oshpaz qalpog'i"],
     duration: "30 daqiqa",
     steps: [
       "Kirish: «Ota-onangiz qayerda ishlaydi?» — qisqa suhbat.",
-      "Rasmlar bilan tanishish: shifokor, oshpaz, quruvchi, o'qituvchi, dehqon, o't o'chiruvchi — kim nima ish qiladi?",
+      "Tanishish: saytdagi «Kasblar albomi»ni ekranda ochib, har bir kasbni bosib tinglaymiz — kim nima ish qiladi, asbobi nima, qayerda ishlaydi?",
       "Didaktik o'yin «Kimga nima kerak?»: mehnat quroli egasiga topshiriladi (cho'mich — oshpazga).",
       "Rolli o'yin: bolalar xalat yoki kaska kiyib, kasb egasi bo'lib ko'radi.",
       "Dinamik pauza: «Kasbni ko'rsat» — tarbiyachi kasb aytadi, bolalar harakat bilan ko'rsatadi.",
-      "Interaktiv mustahkamlash: saytdagi «Kasblar» o'yini.",
+      "Interaktiv mustahkamlash: saytdagi «Kasblar olami» o'yini — kasb egasini, uning asbobini va ish joyini topish.",
       "Yakun: «Katta bo'lsam, men … bo'laman» — har bir bola orzusini aytadi."
     ],
     end: "Bolalar orzu qilgan kasblarini chizib, ko'rgazma tashkil etiladi."

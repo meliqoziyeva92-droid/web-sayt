@@ -282,20 +282,47 @@ const SEASONS = [
 ];
 addGroup("Fasllar", SEASONS.map((s) => ["season_" + s.id, s.text]));
 
-// ---------- Kasblar ----------
+// ---------- Kasblar olami ----------
+// find: "…ni top!", about: kasb haqida qisqa ma'lumot,
+// tool/toolName: mehnat quroli, place/placeQ: ish joyi va savol
 const PROFESSIONS = [
-  { id: "shifokor", emoji: "👩‍⚕️", text: "Shifokorni top! U kasallarni davolaydi." },
-  { id: "oshpaz", emoji: "👨‍🍳", text: "Oshpazni top! U mazali ovqat pishiradi." },
-  { id: "otochiruvchi", emoji: "👨‍🚒", text: "O't o'chiruvchini top! U olovni o'chiradi." },
-  { id: "politsiya", emoji: "👮", text: "Politsiyachini top! U tartibni saqlaydi." },
-  { id: "quruvchi", emoji: "👷", text: "Quruvchini top! U uy quradi." },
-  { id: "oqituvchi", emoji: "👩‍🏫", text: "O'qituvchini top! U maktabda dars beradi." },
-  { id: "dehqon", emoji: "🧑‍🌾", text: "Dehqonni top! U yerga ekin ekadi." },
-  { id: "uchuvchi", emoji: "🧑‍✈️", text: "Uchuvchini top! U samolyot haydaydi." },
-  { id: "rassom", emoji: "👩‍🎨", text: "Rassomni top! U rasm chizadi." },
-  { id: "kosmonavt", emoji: "🧑‍🚀", text: "Kosmonavtni top! U koinotga uchadi." }
+  { id: "shifokor", emoji: "👩‍⚕️", find: "Shifokorni top!", about: "Shifokor. U kasallarni davolaydi.",
+    tool: "🩺", toolName: "Stetoskop", place: "🏥", placeQ: "Shifokor qayerda ishlaydi?" },
+  { id: "oshpaz", emoji: "👨‍🍳", find: "Oshpazni top!", about: "Oshpaz. U mazali ovqat pishiradi.",
+    tool: "🍳", toolName: "Tova", place: "🍽️", placeQ: "Oshpaz qayerda ishlaydi?" },
+  { id: "otochiruvchi", emoji: "👨‍🚒", find: "O't o'chiruvchini top!", about: "O't o'chiruvchi. U olovni o'chiradi va odamlarni qutqaradi.",
+    tool: "🧯", toolName: "O't o'chirgich", place: "🚒", placeQ: "O't o'chiruvchi nimada yuradi?" },
+  { id: "politsiya", emoji: "👮", find: "Politsiyachini top!", about: "Politsiyachi. U tartibni saqlaydi va bizni himoya qiladi.",
+    tool: "🚓", toolName: "Politsiya mashinasi", place: "🚦", placeQ: "Politsiyachi qayerda tartib saqlaydi?" },
+  { id: "quruvchi", emoji: "👷", find: "Quruvchini top!", about: "Quruvchi. U uylar va maktablar quradi.",
+    tool: "🧱", toolName: "G'isht", place: "🏗️", placeQ: "Quruvchi qayerda ishlaydi?" },
+  { id: "oqituvchi", emoji: "👩‍🏫", find: "O'qituvchini top!", about: "O'qituvchi. U maktabda bolalarga dars beradi.",
+    tool: "📚", toolName: "Kitoblar", place: "🏫", placeQ: "O'qituvchi qayerda ishlaydi?" },
+  { id: "dehqon", emoji: "🧑‍🌾", find: "Dehqonni top!", about: "Dehqon. U dalada ekin ekadi va hosil yig'adi.",
+    tool: "🚜", toolName: "Traktor", place: "🌾", placeQ: "Dehqon qayerda ishlaydi?" },
+  { id: "uchuvchi", emoji: "🧑‍✈️", find: "Uchuvchini top!", about: "Uchuvchi. U samolyotni boshqaradi.",
+    tool: "✈️", toolName: "Samolyot", place: "☁️", placeQ: "Uchuvchi qayerda uchadi?" },
+  { id: "rassom", emoji: "👩‍🎨", find: "Rassomni top!", about: "Rassom. U chiroyli rasmlar chizadi.",
+    tool: "🎨", toolName: "Bo'yoqlar", place: "🖼️", placeQ: "Rassomning ishi qaysi?" },
+  { id: "kosmonavt", emoji: "🧑‍🚀", find: "Kosmonavtni top!", about: "Kosmonavt. U raketada koinotga uchadi.",
+    tool: "🚀", toolName: "Raketa", place: "🪐", placeQ: "Kosmonavt qayerga uchadi?" },
+  { id: "sartarosh", emoji: "💇", find: "Sartaroshni top!", about: "Sartarosh. U sochni chiroyli qilib oladi.",
+    tool: "✂️", toolName: "Qaychi", place: "💈", placeQ: "Sartarosh qayerda ishlaydi?" },
+  { id: "mexanik", emoji: "🧑‍🔧", find: "Ustani top!", about: "Usta. U mashinalarni tuzatadi.",
+    tool: "🔧", toolName: "Kalit", place: "🚗", placeQ: "Usta nimani tuzatadi?" },
+  { id: "olim", emoji: "🧑‍🔬", find: "Olimni top!", about: "Olim. U tajribalar o'tkazib, yangi narsalar kashf qiladi.",
+    tool: "🔬", toolName: "Mikroskop", place: "🧪", placeQ: "Olim nima bilan tajriba qiladi?" },
+  { id: "qoshiqchi", emoji: "🧑‍🎤", find: "Qo'shiqchini top!", about: "Qo'shiqchi. U sahnada qo'shiq aytadi.",
+    tool: "🎤", toolName: "Mikrofon", place: "🎭", placeQ: "Qo'shiqchi qayerda chiqish qiladi?" }
 ];
-addGroup("Kasblar", PROFESSIONS.map((p) => ["prof_" + p.id, p.text]));
+addGroup("Kasblar olami", [
+  ["prof_tool_q", "Bu kimning asbobi?"],
+  ["prof_album_q", "Rasmni bos va kasb haqida tingla!"],
+  ...PROFESSIONS.map((p) => ["prof_" + p.id, p.find]),
+  ...PROFESSIONS.map((p) => ["about_" + p.id, p.about]),
+  ...PROFESSIONS.map((p) => ["tool_" + p.id, p.toolName + "."]),
+  ...PROFESSIONS.map((p) => ["place_" + p.id, p.placeQ])
+]);
 
 // ---------- Maktabga tayyorlanamiz ----------
 const SCHOOL_ITEMS = ["🎒", "📚", "✏️", "📏", "🖍️", "📓", "✂️"];

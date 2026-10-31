@@ -391,9 +391,56 @@ const GAMES = [
     }
   },
   {
-    id: "professions", icon: "👩‍⚕️", title: "Kasblar", sub: "Kim nima ish qiladi?", tag: "6-7 yosh",
+    id: "professions", icon: "👩‍⚕️", title: "Kasblar olami", sub: "Kim? Asbobi? Qayerda?", tag: "6-7 yosh",
     theme: "pink", cat: "tayyor",
-    round: findGame("professions", PROFESSIONS, "prof_", (p) => emo(p.emoji), 3)
+    round() {
+      const opts = R.pick(PROFESSIONS, 3);
+      const target = pickTarget("professions", opts);
+      const mode = R.one(["find", "tool", "place"]);
+      if (mode === "find") {
+        // Kasb egasini top
+        UI.ask({
+          prompt: ["prof_" + target.id],
+          options: opts.map((p) => ({ html: emo(p.emoji), ok: p === target, after: ["about_" + target.id] }))
+        });
+      } else if (mode === "tool") {
+        // Asbob ko'rsatiladi — kimniki?
+        UI.ask({
+          prompt: ["tool_" + target.id, "prof_tool_q"],
+          visual: `<div class="big-pic bounce">${target.tool}</div>`,
+          options: opts.map((p) => ({ html: emo(p.emoji), ok: p === target, after: ["about_" + target.id] }))
+        });
+      } else {
+        // Kasb egasi ko'rsatiladi — qayerda ishlaydi?
+        UI.ask({
+          prompt: ["place_" + target.id],
+          visual: `<div class="big-pic bounce">${target.emoji}</div>`,
+          options: opts.map((p) => ({ html: emo(p.place), ok: p === target, after: ["about_" + target.id] }))
+        });
+      }
+    }
+  },
+  {
+    id: "album", icon: "📒", title: "Kasblar albomi", sub: "Kasblar bilan tanishamiz", tag: "6-7 yosh",
+    theme: "blue", cat: "tayyor",
+    round() {
+      UI.custom(`<div class="album">${PROFESSIONS.map((p) =>
+        `<button class="album-card" data-id="${p.id}"><span>${p.emoji}</span></button>`).join("")}</div>
+        <div class="letter-big prof-big" id="prof-big" hidden></div>`, ["prof_album_q"]);
+      const big = document.getElementById("prof-big");
+      document.querySelectorAll(".album-card").forEach((b) => {
+        b.onclick = () => {
+          const p = PROFESSIONS.find((x) => x.id === b.dataset.id);
+          big.innerHTML = `<span class="bounce">${p.emoji}</span>
+            <div class="prof-row"><span title="${p.toolName}">${p.tool}</span><span>${p.place}</span></div>
+            <i>${p.about.split(".")[0]}</i>`;
+          big.hidden = false;
+          b.classList.add("seen");
+          Voice.speak("about_" + p.id);
+        };
+      });
+      big.onclick = () => { big.hidden = true; Voice.stop(); };
+    }
   },
   {
     id: "school", icon: "🎒", title: "Maktabga tayyorlanamiz", sub: "Maktab buyumlari", tag: "6-7 yosh",
