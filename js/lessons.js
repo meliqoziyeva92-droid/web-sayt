@@ -161,36 +161,3 @@ const LESSONS = [
   }
 ];
 
-// O'yin ma'lumotlari
-const COUNT_ITEMS = ["🍎", "🐤", "⭐", "🎈", "🌸", "🐟", "🚗", "🍓", "🐞", "🧸"];
-
-const COLORS = [
-  { name: "qizil", hex: "#e53935" },
-  { name: "sariq", hex: "#fdd835" },
-  { name: "yashil", hex: "#43a047" },
-  { name: "ko'k", hex: "#1e88e5" },
-  { name: "to'q sariq", hex: "#fb8c00" },
-  { name: "binafsha", hex: "#8e24aa" },
-  { name: "pushti", hex: "#f06292" },
-  { name: "jigarrang", hex: "#795548" }
-];
-
-const SHAPES = [
-  { name: "doira", svg: '<circle cx="50" cy="50" r="40"/>' },
-  { name: "kvadrat", svg: '<rect x="12" y="12" width="76" height="76"/>' },
-  { name: "uchburchak", svg: '<polygon points="50,8 92,90 8,90"/>' },
-  { name: "to'rtburchak", svg: '<rect x="5" y="28" width="90" height="44"/>' },
-  { name: "yulduz", svg: '<polygon points="50,5 61,38 95,38 67,59 78,93 50,72 22,93 33,59 5,38 39,38"/>' },
-  { name: "yurak", svg: '<path d="M50 88 L12 50 A20 20 0 0 1 50 22 A20 20 0 0 1 88 50 Z"/>' }
-];
-
-const ANIMALS = [
-  { animal: "🐰", name: "Quyoncha", food: "🥕" },
-  { animal: "🐒", name: "Maymuncha", food: "🍌" },
-  { animal: "🐿️", name: "Olmaxon", food: "🌰" },
-  { animal: "🐻", name: "Ayiqcha", food: "🍯" },
-  { animal: "🐄", name: "Sigir", food: "🌾" },
-  { animal: "🐭", name: "Sichqoncha", food: "🧀" },
-  { animal: "🐼", name: "Panda", food: "🎋" },
-  { animal: "🐱", name: "Mushukcha", food: "🥛" }
-];

@@ -2,88 +2,195 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bog'cha mashg'ulotlari</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FFF9F0">
+  <title>Bog'cha O'yinlari</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <h1>🌈 Bog'cha mashg'ulotlari</h1>
-      <p>Tarbiyachilar uchun tayyor mashg'ulot rejalari va bolalar uchun interaktiv o'yinlar</p>
-      <nav>
-        <a href="#rejalar" class="btn">📋 Mashg'ulot rejalari</a>
-        <a href="#oyinlar" class="btn btn-alt">🎮 O'yinlar</a>
-      </nav>
+
+  <!-- ===== Boshlash ekrani (ovozni yoqish uchun bitta bosish kerak) ===== -->
+  <div class="start" id="start">
+    <div class="sun big">☀️</div>
+    <h1>Bog'cha O'yinlari</h1>
+    <button class="btn3d pink huge" id="start-btn" aria-label="Boshlash">▶</button>
+    <p>Boshlash uchun bosing</p>
+  </div>
+
+  <!-- ===== Yuqori panel ===== -->
+  <header class="topbar">
+    <button class="logo" id="logo" aria-label="Bosh sahifa">
+      <span class="sun">☀️</span><span class="logo-text">Bog'cha O'yinlari</span>
+    </button>
+    <button class="btn3d blue pill voice-btn" id="voice-guide">
+      <span class="wave">🔊</span><span class="hide-sm">Ovozli yo'riqnoma</span>
+    </button>
+    <div class="top-right">
+      <div class="stars-badge" aria-label="Yulduzlar">⭐ <span id="stars-total">0</span></div>
+      <button class="teacher-btn" id="teacher-btn">🔒 <span class="hide-sm">Tarbiyachi</span> ⚙️</button>
     </div>
   </header>
 
-  <main>
-    <section id="rejalar">
-      <h2>📋 Mashg'ulot rejalari</h2>
-      <p class="lead">Yosh guruhini tanlang va kerakli mashg'ulotni oching.</p>
-
-      <div class="filters" id="filters">
-        <button class="chip active" data-age="all">Barchasi</button>
-        <button class="chip" data-age="kichik">Kichik guruh (3–4 yosh)</button>
-        <button class="chip" data-age="orta">O'rta guruh (4–5 yosh)</button>
-        <button class="chip" data-age="katta">Katta guruh (5–6 yosh)</button>
-        <button class="chip" data-age="tayyorlov">Tayyorlov guruhi (6–7 yosh)</button>
+  <!-- ===== Bosh sahifa ===== -->
+  <main id="home">
+    <section class="hero">
+      <div class="mascot" id="mascot">
+        <span class="sun-face">🌞</span>
+        <span class="mascot-mic">🔊</span>
       </div>
-
-      <div class="cards" id="cards"></div>
+      <div class="bubble">
+        <span class="pill-tag">🎉 Kunning quvnoq tanlovi!</span>
+        <h1>Salom, do'stlar! Keling, birga o'ynaymiz! 🎈</h1>
+        <p>Bugun 12 ta qiziqarli o'yinda yulduzchalar yig'amiz!</p>
+        <button class="btn3d pink pill big-cta" id="hero-listen">▶ Eshitish</button>
+      </div>
     </section>
 
-    <section id="oyinlar">
-      <h2>🎮 Interaktiv o'yinlar</h2>
-      <p class="lead">Mashg'ulot yakunida bolalar bilan birga o'ynang.</p>
+    <div class="chips" id="chips"></div>
+    <div class="game-grid" id="game-grid"></div>
 
-      <div class="games">
-        <div class="game" id="game-count">
-          <h3>🔢 Sanab ko'r!</h3>
-          <p class="question">Nechta narsa bor?</p>
-          <div class="stage" id="count-stage"></div>
-          <div class="answers" id="count-answers"></div>
-          <p class="feedback" id="count-feedback"></p>
-        </div>
-
-        <div class="game" id="game-color">
-          <h3>🎨 Rangni top!</h3>
-          <p class="question" id="color-question"></p>
-          <div class="answers colors" id="color-answers"></div>
-          <p class="feedback" id="color-feedback"></p>
-        </div>
-
-        <div class="game" id="game-shape">
-          <h3>🔷 Shaklni top!</h3>
-          <p class="question" id="shape-question"></p>
-          <div class="answers shapes" id="shape-answers"></div>
-          <p class="feedback" id="shape-feedback"></p>
-        </div>
-
-        <div class="game" id="game-food">
-          <h3>🐾 Kim nima yeydi?</h3>
-          <p class="question" id="food-question"></p>
-          <div class="stage big" id="food-animal"></div>
-          <div class="answers" id="food-answers"></div>
-          <p class="feedback" id="food-feedback"></p>
-        </div>
+    <section class="tip">
+      <span class="owl">🦉</span>
+      <div>
+        <h3>Dono boyo'g'li aytadi:</h3>
+        <p>Har kuni kamida 3 ta o'yin o'ynagan bolajonlar eng chaqqon va bilimdon bo'lishadi!</p>
       </div>
-      <p class="score">⭐ Yulduzchalar: <span id="stars">0</span></p>
+      <button class="btn3d navy pill" id="tip-listen">👂 Maslahatni tinglash</button>
     </section>
+
+    <footer class="footer">
+      <div class="foot-brand">
+        <span class="sun small">☀️</span>
+        <div><b>Quyoshvoy &amp; Dono bilan quvnoq bilim!</b><br>Bolalar bog'chalari uchun xavfsiz va o'yinli ta'lim platformasi</div>
+      </div>
+      <div class="foot-meta"><span>✅ MTT tarbiyachilari uchun</span><span>🙂 3–7 yosh bolalar uchun</span></div>
+    </footer>
   </main>
 
-  <div class="modal" id="modal" hidden>
-    <div class="modal-box">
-      <button class="close" id="modal-close" aria-label="Yopish">✕</button>
-      <div id="modal-content"></div>
-      <button class="btn print" onclick="window.print()">🖨️ Chop etish</button>
+  <!-- ===== O'yin ekrani ===== -->
+  <main id="game" hidden>
+    <div class="game-top">
+      <button class="btn3d yellow round" id="home-btn" aria-label="Bosh sahifa">🏠</button>
+      <div class="game-name" id="game-name"></div>
+      <button class="btn3d blue round repeat" id="repeat-btn" aria-label="Savolni takrorlash">🔊</button>
+    </div>
+    <div class="progress" id="progress"></div>
+    <div class="game-panel" id="game-panel">
+      <div class="visual" id="visual"></div>
+      <div class="answers" id="answers"></div>
+    </div>
+    <p class="teacher-hint" id="hint"></p>
+  </main>
+
+  <!-- ===== Mukofot ===== -->
+  <div class="reward" id="reward" hidden>
+    <div class="reward-box">
+      <div class="trophy">🏆</div>
+      <h2>Ofarin!</h2>
+      <div class="reward-stars">⭐⭐⭐⭐⭐</div>
+      <button class="btn3d green pill big-cta" id="reward-next">Davom etamiz ▶</button>
     </div>
   </div>
 
-  <footer>© Bog'cha mashg'ulotlari — bolalar bilan quvonchli o'rganing!</footer>
+  <!-- ===== Kattalar tekshiruvi ===== -->
+  <div class="modal" id="gate" hidden>
+    <div class="modal-box small">
+      <h3>🔒 Faqat kattalar uchun</h3>
+      <p>Javobni yozing: <b id="gate-q"></b></p>
+      <input type="number" id="gate-input" inputmode="numeric" autocomplete="off">
+      <p class="err" id="gate-err"></p>
+      <div class="row">
+        <button class="btn3d pink pill" id="gate-ok">Kirish</button>
+        <button class="btn-flat" id="gate-cancel">Bekor qilish</button>
+      </div>
+    </div>
+  </div>
 
-  <script src="data.js"></script>
-  <script src="script.js"></script>
+  <!-- ===== Tarbiyachi paneli ===== -->
+  <div class="teacher" id="teacher" hidden>
+    <aside class="t-side">
+      <h2>Tarbiyachi paneli</h2>
+      <button class="t-tab active" data-tab="lessons">📋 Mashg'ulot rejalari</button>
+      <button class="t-tab" data-tab="voice">🎙️ Ovoz yozish</button>
+      <button class="t-tab" data-tab="settings">⚙️ Sozlamalar</button>
+      <button class="t-tab" data-tab="help">❓ Yo'riqnoma</button>
+      <button class="btn3d pink pill t-close" id="teacher-close">✕ Yopish</button>
+    </aside>
+    <div class="t-main">
+      <!-- Mashg'ulotlar -->
+      <section class="t-page" id="tab-lessons">
+        <h2>📋 Mashg'ulot rejalari</h2>
+        <div class="chips small" id="age-chips">
+          <button class="chip active" data-age="all">Barchasi</button>
+          <button class="chip" data-age="kichik">Kichik (3–4)</button>
+          <button class="chip" data-age="orta">O'rta (4–5)</button>
+          <button class="chip" data-age="katta">Katta (5–6)</button>
+          <button class="chip" data-age="tayyorlov">Tayyorlov (6–7)</button>
+        </div>
+        <div class="lesson-grid" id="lesson-grid"></div>
+        <article class="lesson-detail" id="lesson-detail" hidden></article>
+      </section>
+
+      <!-- Ovoz yozish -->
+      <section class="t-page" id="tab-voice" hidden>
+        <h2>🎙️ Ovoz yozish studiyasi</h2>
+        <p class="muted">Har bir savolni o'z ovozingiz bilan yozib qo'ying — bolalar tarbiyachisining ovozini eshitadi.
+          Yozilmagan iboralarni kompyuter ovozi o'qiydi.</p>
+        <div class="studio-bar">
+          <div class="rec-progress"><div id="rec-bar"></div></div>
+          <b id="rec-count"></b>
+          <select id="group-select"></select>
+          <button class="btn3d blue pill sm" id="export-btn">⬇️ Eksport</button>
+          <label class="btn3d green pill sm">⬆️ Import<input type="file" id="import-input" accept=".json" hidden></label>
+        </div>
+        <p class="err" id="rec-err"></p>
+        <div class="phrase-list" id="phrase-list"></div>
+      </section>
+
+      <!-- Sozlamalar -->
+      <section class="t-page" id="tab-settings" hidden>
+        <h2>⚙️ Sozlamalar</h2>
+        <div class="setting">
+          <label for="voice-select">Kompyuter ovozi (yozilmagan iboralar uchun)</label>
+          <select id="voice-select"></select>
+          <p class="muted" id="voice-info"></p>
+        </div>
+        <div class="setting">
+          <label for="rate">Gapirish tezligi: <b id="rate-val"></b></label>
+          <input type="range" id="rate" min="0.6" max="1.3" step="0.05">
+        </div>
+        <div class="row">
+          <button class="btn3d blue pill" id="test-voice">🔊 Ovozni sinash</button>
+          <button class="btn3d pink pill" id="reset-stars">⭐ Yulduzlarni nolga tushirish</button>
+        </div>
+      </section>
+
+      <!-- Yo'riqnoma -->
+      <section class="t-page" id="tab-help" hidden>
+        <h2>❓ Yo'riqnoma</h2>
+        <ol class="help">
+          <li><b>Bolalar uchun:</b> bola o'yin kartasini bosadi, savol ovoz bilan aytiladi. 🔊 tugmasi savolni qayta aytadi. Javoblar faqat rasm, rang va shakllardan iborat — o'qish shart emas.</li>
+          <li><b>Har 5 ta to'g'ri javob</b> uchun bola kubok 🏆 oladi. Har bir o'yin kartasidagi ⭐ 0/3 — o'sha o'yindagi yutuqlar.</li>
+          <li><b>O'z ovozingizni yozing:</b> «Ovoz yozish» bo'limida 🎙️ tugmasini bosing, iborani ayting, ⏹ bilan to'xtating. Ovoz shu qurilmada saqlanadi.</li>
+          <li><b>Boshqa planshetlarga o'tkazish:</b> «Eksport» bilan faylni saqlang, boshqa qurilmada «Import» qiling.</li>
+          <li><b>Eng yaxshi kompyuter ovozi:</b> Windows kompyuterda <b>Microsoft Edge</b> brauzerida o'zbekcha ovoz (Madina, Sardor) bor. Boshqa brauzerlarda turkcha ovoz ishlatiladi.</li>
+          <li><b>Mikrofon</b> faqat sayt <b>https://</b> manzilda ochilganda ishlaydi (masalan GitHub Pages).</li>
+          <li><b>Internetsiz:</b> sayt bir marta ochilgandan keyin internetsiz ham ishlaydi. Telefonda «Bosh ekranga qo'shish» orqali ilova kabi o'rnatish mumkin.</li>
+        </ol>
+      </section>
+    </div>
+  </div>
+
+  <div class="confetti" id="confetti"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/lessons.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

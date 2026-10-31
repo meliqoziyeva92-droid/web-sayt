@@ -16,7 +16,9 @@ function addGroup(title, entries) {
 
 // ---------- Umumiy iboralar ----------
 addGroup("Umumiy", [
-  ["welcome", "Salom, bolajonlar! Qaysi o'yinni o'ynaymiz?"],
+  ["welcome", "Salom, do'stlar! Keling, birga o'ynaymiz! Bugun o'yinlarda yulduzchalar yig'amiz!"],
+  ["guide", "O'yin rasmini bos. Savolni diqqat bilan tingla va to'g'ri rasmni top! Karnayni bossang, savol yana aytiladi."],
+  ["tip", "Har kuni kamida uchta o'yin o'ynagan bolajonlar eng chaqqon va bilimdon bo'lishadi!"],
   ["praise1", "Barakalla! To'g'ri!"],
   ["praise2", "Zo'r! Juda yaxshi!"],
   ["praise3", "Qoyil! Ofarin!"],
