@@ -217,7 +217,7 @@ const GAMES = [
       const plus = Math.random() < 0.55;
       let a, b, ans, visual;
       const row = (n, cls = "") => `<span class="m-group">${Array.from({ length: n },
-        () => `<span class="m-item ${cls}">${item}</span>`).join("")}</span>`;
+        () => `<span class="m-item ${cls}"><i>${item}</i></span>`).join("")}</span>`;
       if (plus) {
         a = R.int(5) + 1; b = R.int(Math.min(5, 10 - a)) + 1; ans = a + b;
         visual = `<div class="math">${row(a)}<span class="m-op">+</span>${row(b)}<span class="m-op">=</span><span class="m-q">?</span></div>`;
