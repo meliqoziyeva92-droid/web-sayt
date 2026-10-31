@@ -210,7 +210,7 @@ const GAMES = [
   },
   // ================= TAYYORLOV GURUHI (6–7 yosh) =================
   {
-    id: "math", icon: "➕", title: "Qo'shish va ayirish", sub: "10 gacha misollar", tag: "6-7 yosh",
+    id: "math", icon: "➕", title: "Qo'shish va ayirish", sub: "10 gacha, rasmlar bilan", tag: "6-7 yosh",
     theme: "yellow", cat: "tayyor",
     round() {
       const item = R.one(MATH_ITEMS);
@@ -235,6 +235,42 @@ const GAMES = [
         visual,
         options: R.shuffle([...opts]).map((v) => ({
           html: `<span class="num">${v}</span>`, ok: v === ans, after: v > 0 ? ["n" + v] : []
+        }))
+      });
+    }
+  },
+  {
+    id: "math50", icon: "🧮", title: "50 gacha misollar", sub: "O'nliklar va birliklar", tag: "6-7 yosh",
+    theme: "blue", cat: "tayyor",
+    round() {
+      const plus = Math.random() < 0.5;
+      const easy = Math.random() < 0.7; // ko'pincha o'nlikdan o'tmaydigan misollar
+      let a, b;
+      for (let tries = 0; tries < 100; tries++) {
+        if (plus) {
+          a = R.int(40) + 5; b = R.int(50 - a) + 1;
+          if (!easy || (a % 10) + (b % 10) < 10) break;
+        } else {
+          a = R.int(41) + 10; b = R.int(a) + 1;
+          if (!easy || (a % 10) >= (b % 10)) break;
+        }
+      }
+      const ans = plus ? a + b : a - b;
+      const opts = new Set([ans]);
+      for (const d of R.shuffle([1, -1, 10, -10, 2, -2])) {
+        if (opts.size === 3) break;
+        if (ans + d >= 0 && ans + d <= 50) opts.add(ans + d);
+      }
+      const blocks = (n) => {
+        const t = Math.floor(n / 10), o = n % 10;
+        return `<span class="blocks">${'<span class="ten"></span>'.repeat(t)}<span class="ones">${'<span class="one"></span>'.repeat(o)}</span></span>`;
+      };
+      const part = (n) => `<span class="m50-part"><b>${n}</b>${blocks(n)}</span>`;
+      UI.ask({
+        prompt: [...numberKeys(a), plus ? "op_plus" : "op_minus", ...numberKeys(b), "op_eq"],
+        visual: `<div class="math50">${part(a)}<span class="m-op">${plus ? "+" : "−"}</span>${part(b)}<span class="m-op">=</span><span class="m-q">?</span></div>`,
+        options: R.shuffle([...opts]).map((v) => ({
+          html: `<span class="num">${v}</span>`, ok: v === ans, after: numberKeys(v)
         }))
       });
     }

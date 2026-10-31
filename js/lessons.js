@@ -226,5 +226,22 @@ const LESSONS = [
       "Yakun: «Maktabda men birinchi bo'lib nimani o'rganmoqchiman?»"
     ],
     end: "Bolalar «Mening portfelim» rasmini chizadilar."
+  },
+  {
+    id: 15, age: "tayyorlov", ageLabel: "6–7 yosh", icon: "🧮",
+    area: "Matematika", title: "50 gacha qo'shish va ayirish",
+    goal: "50 gacha sonlarning tarkibini (o'nliklar va birliklar) tushuntirish, o'nlikdan o'tmasdan qo'shish va ayirishni o'rgatish.",
+    materials: ["Sanoq tayoqchalari (10 tadan rezinka bilan bog'langan dastalar)", "Raqamli kartochkalar", "«+», «−», «=» belgilari", "Proyektor yoki planshet"],
+    duration: "30 daqiqa",
+    steps: [
+      "Kirish: «Bir dasta tayoqchada nechta tayoqcha bor? — O'nta». Dasta — bu bitta o'nlik.",
+      "Sonning tarkibi: 23 ni yasaymiz — 2 ta dasta (yigirma) va 3 ta alohida tayoqcha (uch). Bolalar 15, 31, 40 sonlarini o'zlari yasaydi.",
+      "Qo'shish: 23 + 12 — avval dastalarni qo'shamiz (2 + 1 = 3 dasta), keyin alohida tayoqchalarni (3 + 2 = 5). Javob: 35.",
+      "Ayirish: 36 − 14 — 3 dastadan 1 dastani, 6 tayoqchadan 4 tasini olamiz. Qoladi: 2 dasta va 2 tayoqcha = 22.",
+      "Dinamik pauza: «O'nlik va birlik» — o'nlik aytilsa qo'llar yuqoriga, birlik aytilsa qarsak.",
+      "Interaktiv mustahkamlash: saytdagi «50 gacha misollar» o'yini. Ekrandagi uzun tayoqcha — o'nlik, kichik kubik — birlik.",
+      "Yakun: har bir bola tayoqchalar bilan bitta misol tuzib, guruhga yechdiradi."
+    ],
+    end: "To'g'ri yechgan bolalar «Yosh matematik» yulduzchasini oladi."
   }
 ];

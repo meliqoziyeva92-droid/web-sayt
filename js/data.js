@@ -36,6 +36,24 @@ addGroup("Sanash", [
   ...NUMBERS.map((n, i) => ["n" + (i + 1), n])
 ]);
 
+// 11–50 gacha sonlar bo'laklardan yig'iladi: 23 = "Yigirma" + "Uch"
+addGroup("O'nliklar (50 gacha)", [
+  ["n0", "Nol"],
+  ["t20", "Yigirma"],
+  ["t30", "O'ttiz"],
+  ["t40", "Qirq"],
+  ["t50", "Ellik"]
+]);
+
+// Son uchun ovoz kalitlari ro'yxati (0–50)
+function numberKeys(v) {
+  if (v === 0) return ["n0"];
+  if (v <= 10) return ["n" + v];
+  const tens = Math.floor(v / 10) * 10, ones = v % 10;
+  const head = tens === 10 ? "n10" : "t" + tens;
+  return ones ? [head, "n" + ones] : [head];
+}
+
 // ---------- Ranglar ----------
 const COLORS = [
   { id: "qizil", hex: "#e53935", text: "Qizil rangni top!" },
@@ -198,7 +216,10 @@ addGroup("Alifbo", [
 const MATH_ITEMS = ["🍎", "🍐", "🎈", "⭐", "🐤", "🍬", "🌸", "🧁"];
 addGroup("Qo'shish va ayirish", [
   ["math_plus", "Qo'shamiz! Nechta bo'ldi?"],
-  ["math_minus", "Ayiramiz! Nechta qoldi?"]
+  ["math_minus", "Ayiramiz! Nechta qoldi?"],
+  ["op_plus", "qo'shuv"],
+  ["op_minus", "ayiruv"],
+  ["op_eq", "Nechchi bo'ladi?"]
 ]);
 
 // ---------- Birinchi harf ----------
