@@ -220,9 +220,10 @@ const LESSONS = [
       "Kirish: qo'ng'iroq chalinadi — «Bu qo'ng'iroq qayerda chalinadi?»",
       "Suhbat: Maktabda nima qilinadi? O'qituvchi kim? Darsda o'zimizni qanday tutamiz (qo'l ko'tarish, jim o'tirish)?",
       "O'yin «Portfelni yig'amiz»: stolda maktab buyumlari va o'yinchoqlar aralash — bolalar faqat kerakli narsalarni portfelga soladi.",
+      "Kun tartibi: «Ertalab nima qilamiz?» — uyg'onamiz, yuvinamiz, nonushta qilamiz, kiyinamiz, maktabga boramiz. Bolalar harakatlar bilan ko'rsatadi.",
       "Dinamik pauza: «Tanaffus» — quvnoq musiqa ostida harakat.",
       "Rolli o'yin «Dars»: bir bola o'qituvchi, qolganlar o'quvchi — salomlashish, qo'l ko'tarib javob berish.",
-      "Interaktiv mustahkamlash: saytdagi «Maktabga tayyorlanamiz» va «Ketma-ketlik» o'yinlari.",
+      "Interaktiv mustahkamlash: saytdagi «Men maktabga boraman» o'yini — portfel yig'ish, maktab qoidalari va ertalabki kun tartibi.",
       "Yakun: «Maktabda men birinchi bo'lib nimani o'rganmoqchiman?»"
     ],
     end: "Bolalar «Mening portfelim» rasmini chizadilar."

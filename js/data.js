@@ -327,4 +327,30 @@ addGroup("Kasblar olami", [
 // ---------- Maktabga tayyorlanamiz ----------
 const SCHOOL_ITEMS = ["🎒", "📚", "✏️", "📏", "🖍️", "📓", "✂️"];
 const NOT_SCHOOL_ITEMS = ["🧸", "🍭", "🎮", "⚽", "🛝", "🎈", "🪀", "🍦"];
-addGroup("Maktabga tayyorlanamiz", [["school_q", "Maktabga qaysi birini olib boramiz?"]]);
+// O'quvchi odobi va maktab qoidalari
+const SCHOOL_RULES = [
+  { id: "qol", text: "Darsda javob bermoqchi bo'lsang nima qilasan?", ok: "🙋", no: ["🗣️", "🤸"] },
+  { id: "tingla", text: "O'qituvchi gapirganda nima qilamiz?", ok: "👂", no: ["😴", "🏃"] },
+  { id: "salom", text: "O'qituvchini ko'rsak nima qilamiz?", ok: "👋😊", no: ["😝", "🙈"] },
+  { id: "kim", text: "Maktabda kim dars beradi?", ok: "👩‍🏫", no: ["👨‍🍳", "👨‍🚒"] },
+  { id: "tanaffus", text: "Tanaffusda nima qilamiz?", ok: "⚽", no: ["🛏️", "📺"] },
+  { id: "kiyim", text: "Maktabga qanday kiyimda boramiz?", ok: "👔", no: ["🩱", "🩴"] },
+  { id: "uy", text: "Maktabdan keyin uyda nima qilamiz?", ok: "📝", no: ["🗑️", "🧨"] },
+  { id: "yol", text: "Maktabga ketayotganda yo'lni qayerdan kesib o'tamiz?", ok: "🚸", no: ["🚧", "🌊"] }
+];
+// Ertalabki kun tartibi (to'g'ri tartibda)
+const MORNING = [
+  { id: "m1", emoji: "⏰", text: "Uyg'onamiz." },
+  { id: "m2", emoji: "🪥", text: "Yuvinamiz, tishimizni tozalaymiz." },
+  { id: "m3", emoji: "🥣", text: "Nonushta qilamiz." },
+  { id: "m4", emoji: "👔", text: "Kiyinamiz." },
+  { id: "m5", emoji: "🏫", text: "Maktabga boramiz!" }
+];
+addGroup("Men maktabga boraman", [
+  ["school_q", "Maktabga qaysi birini olib boramiz?"],
+  ["bag_q", "Portfelni yig'! Maktabga kerakli hamma narsani bos!"],
+  ["bag_done", "Portfel tayyor! Endi maktabga borsa bo'ladi!"],
+  ["morning_q", "Ertalab nimadan boshlaymiz? Rasmlarni tartib bilan bos!"],
+  ...SCHOOL_RULES.map((r) => ["rule_" + r.id, r.text]),
+  ...MORNING.map((m) => ["morning_" + m.id, m.text])
+]);

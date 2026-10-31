@@ -443,13 +443,84 @@ const GAMES = [
     }
   },
   {
-    id: "school", icon: "🎒", title: "Maktabga tayyorlanamiz", sub: "Maktab buyumlari", tag: "6-7 yosh",
+    id: "school", icon: "🎒", title: "Men maktabga boraman", sub: "Portfel, qoidalar, kun tartibi", tag: "6-7 yosh",
     theme: "blue", cat: "tayyor",
     round() {
-      const ok = R.one(SCHOOL_ITEMS);
-      UI.ask({
-        prompt: ["school_q"],
-        options: R.shuffle([ok, ...R.pick(NOT_SCHOOL_ITEMS, 2)]).map((e) => ({ html: emo(e), ok: e === ok }))
+      const mode = R.one(["pick", "bag", "rules", "rules", "morning"]);
+
+      // 1) Maktab buyumini top
+      if (mode === "pick") {
+        const ok = R.one(SCHOOL_ITEMS);
+        UI.ask({
+          prompt: ["school_q"],
+          options: R.shuffle([ok, ...R.pick(NOT_SCHOOL_ITEMS, 2)]).map((e) => ({ html: emo(e), ok: e === ok }))
+        });
+        return;
+      }
+
+      // 2) Maktab qoidalari
+      if (mode === "rules") {
+        const r = pickTarget("school_rules", SCHOOL_RULES);
+        UI.ask({
+          prompt: ["rule_" + r.id],
+          options: R.shuffle([{ html: emo(r.ok), ok: true }, ...r.no.map((n) => ({ html: emo(n), ok: false }))])
+        });
+        return;
+      }
+
+      // 3) Portfelni yig' — barcha maktab buyumlarini bosish kerak
+      if (mode === "bag") {
+        const need = R.pick(SCHOOL_ITEMS.filter((e) => e !== "🎒"), 4);
+        const items = R.shuffle([...need, ...R.pick(NOT_SCHOOL_ITEMS, 4)]);
+        UI.custom(`<div class="bag-game">
+            <div class="bag"><span class="bag-icon">🎒</span><span class="bag-in" id="bag-in"></span></div>
+            <div class="bag-items">${items.map((e) => `<button class="bag-item">${e}</button>`).join("")}</div>
+          </div>`, ["bag_q"]);
+        let got = 0;
+        document.querySelectorAll(".bag-item").forEach((btn) => {
+          btn.onclick = () => {
+            if (btn.classList.contains("used") || UI.locked) return;
+            if (need.includes(btn.textContent)) {
+              btn.classList.add("used");
+              document.getElementById("bag-in").textContent += btn.textContent;
+              got++;
+              if (got === need.length) { UI.locked = true; UI.win(["bag_done"]); }
+              else Voice.speak(R.one(["praise1", "praise2"]));
+            } else {
+              btn.classList.remove("wrong"); void btn.offsetWidth; btn.classList.add("wrong");
+              Voice.speak(R.one(["retry1", "retry2"]));
+            }
+          };
+        });
+        return;
+      }
+
+      // 4) Ertalabki kun tartibi — rasmlarni to'g'ri tartibda bosish
+      const steps = MORNING;
+      let order = R.shuffle(steps);
+      while (order.every((x, k) => x === steps[k])) order = R.shuffle(steps);
+      UI.custom(`<div class="build">
+          <div class="slots">${steps.map((_, k) => `<span class="slot step"><small>${k + 1}</small></span>`).join("")}</div>
+          <div class="tiles">${order.map((m) => `<button class="tile step-tile" data-id="${m.id}">${m.emoji}</button>`).join("")}</div>
+        </div>`, ["morning_q"]);
+      let next = 0;
+      const slots = document.querySelectorAll(".slot");
+      document.querySelectorAll(".step-tile").forEach((tile) => {
+        tile.onclick = () => {
+          if (tile.classList.contains("used") || UI.locked) return;
+          if (tile.dataset.id === steps[next].id) {
+            slots[next].innerHTML = steps[next].emoji;
+            slots[next].classList.add("filled");
+            tile.classList.add("used");
+            next++;
+            if (next === steps.length) { UI.locked = true; UI.win(); }
+            else Voice.speak("morning_" + steps[next - 1].id);
+          } else {
+            tile.classList.remove("wrong"); void tile.offsetWidth; tile.classList.add("wrong");
+            setTimeout(() => tile.classList.remove("wrong"), 600);
+            Voice.speak(R.one(["retry1", "retry2"]));
+          }
+        };
       });
     }
   }
