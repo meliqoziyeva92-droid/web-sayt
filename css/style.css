@@ -485,3 +485,26 @@ body.speaking .sun-face { animation: talk .35s ease-in-out infinite alternate; }
 .ten { width: 14px; height: 120px; border-radius: 4px; background: repeating-linear-gradient(180deg, var(--orange) 0 10px, var(--orange-d) 10px 12px); box-shadow: 0 3px 0 var(--orange-d); }
 .ones { display: grid; grid-template-columns: repeat(3, 14px); gap: 4px; align-content: end; }
 .one { width: 14px; height: 14px; border-radius: 3px; background: var(--green); box-shadow: 0 2px 0 var(--green-d); }
+
+/* So'z va bo'g'in */
+.claps { font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -2px; line-height: 1.2; text-align: center; }
+.clap-n { font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 900; color: var(--blue-deep); line-height: 1; margin-top: 6px; }
+.build { display: flex; flex-direction: column; align-items: center; gap: 22px; width: 100%; }
+.slots { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.slot {
+  min-width: clamp(90px, 14vw, 130px); height: clamp(76px, 11vw, 96px);
+  border: 4px dashed var(--yellow); border-radius: 22px; background: var(--cream);
+  display: flex; align-items: center; justify-content: center; padding: 0 12px;
+  font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: var(--pink-deep);
+}
+.slot.filled { border-style: solid; border-color: var(--green); background: #eafaf1; animation: popIn .35s; }
+.tiles { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.tile {
+  min-width: clamp(100px, 15vw, 140px); height: clamp(80px, 12vw, 100px); padding: 0 16px;
+  border: none; border-radius: 24px; background: var(--blue); color: #fff;
+  font-size: clamp(2rem, 5vw, 3rem); font-weight: 900;
+  box-shadow: 0 7px 0 var(--blue-d); transition: transform .12s, box-shadow .12s;
+}
+.tile:active { transform: translateY(7px); box-shadow: none; }
+.tile.used { visibility: hidden; }
+.tile.wrong { background: var(--orange); box-shadow: 0 7px 0 var(--orange-d); animation: shake .45s; }

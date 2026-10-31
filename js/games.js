@@ -291,6 +291,58 @@ const GAMES = [
     }
   },
   {
+    id: "syllables", icon: "👏", title: "So'z va bo'g'in", sub: "Bo'g'inni sana, so'zni yig'", tag: "6-7 yosh",
+    theme: "yellow", cat: "tayyor",
+    round() {
+      const target = pickTarget("syllables", SYLLABLE_WORDS);
+      const pic = `<div class="big-pic bounce">${target.emoji}</div>`;
+      // 1) Bo'g'inlarni sanash (qarsak bilan)
+      if (target.syl.length < 2 || Math.random() < 0.5) {
+        UI.ask({
+          prompt: ["word_" + target.id, "syl_count_q"],
+          visual: pic,
+          options: [1, 2, 3, 4].map((n) => ({
+            html: `<span class="claps">${"👏".repeat(n)}</span><span class="clap-n">${n}</span>`,
+            ok: n === target.syl.length,
+            after: ["sylls_" + target.id]
+          }))
+        });
+        return;
+      }
+      // 2) Bo'g'inlardan so'z yig'ish
+      let tiles = R.shuffle(target.syl.map((t, i) => ({ t, i })));
+      while (tiles.length > 1 && tiles.every((x, k) => x.i === k)) tiles = R.shuffle(tiles);
+      UI.custom(`<div class="build">
+          ${pic}
+          <div class="slots">${target.syl.map(() => `<span class="slot"></span>`).join("")}</div>
+          <div class="tiles">${tiles.map((x) => `<button class="tile" data-i="${x.i}">${x.t.toLowerCase()}</button>`).join("")}</div>
+        </div>`, ["word_" + target.id, "syl_build_q"]);
+      let next = 0;
+      const slots = document.querySelectorAll(".slot");
+      document.querySelectorAll(".tile").forEach((tile) => {
+        tile.onclick = () => {
+          if (tile.classList.contains("used") || UI.locked) return;
+          if (Number(tile.dataset.i) === next) {
+            slots[next].textContent = target.syl[next];
+            slots[next].classList.add("filled");
+            tile.classList.add("used");
+            next++;
+            if (next === target.syl.length) {
+              UI.locked = true;
+              UI.win(["sylls_" + target.id]);
+            }
+          } else {
+            tile.classList.remove("wrong");
+            void tile.offsetWidth;
+            tile.classList.add("wrong");
+            setTimeout(() => tile.classList.remove("wrong"), 600);
+            Voice.speak(R.one(["retry1", "retry2"]));
+          }
+        };
+      });
+    }
+  },
+  {
     id: "pattern", icon: "🔴", title: "Ketma-ketlik", sub: "Naqshni davom ettir", tag: "6-7 yosh",
     theme: "blue", cat: "tayyor",
     round() {

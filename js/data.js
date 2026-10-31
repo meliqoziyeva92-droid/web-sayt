@@ -228,6 +228,34 @@ const FIRST_LETTERS = LETTERS.filter((l) => l.letter !== "Ng");
 addGroup("Birinchi harf", FIRST_LETTERS.map((l) =>
   ["first_" + l.id, `${l.word}. ${l.word} qaysi harf bilan boshlanadi?`]));
 
+// ---------- So'z va bo'g'in ----------
+const SYLLABLE_WORDS = [
+  // 1 bo'g'in
+  ["fil", "🐘", ["Fil"]], ["gul", "🌸", ["Gul"]], ["non", "🍞", ["Non"]], ["uy", "🏠", ["Uy"]],
+  ["oy", "🌙", ["Oy"]], ["shar", "🎈", ["Shar"]], ["nok", "🍐", ["Nok"]], ["ot", "🐴", ["Ot"]],
+  // 2 bo'g'in
+  ["olma", "🍎", ["Ol", "ma"]], ["ari", "🐝", ["A", "ri"]], ["baliq", "🐟", ["Ba", "liq"]],
+  ["kitob", "📖", ["Ki", "tob"]], ["tarvuz", "🍉", ["Tar", "vuz"]], ["uzum", "🍇", ["U", "zum"]],
+  ["sabzi", "🥕", ["Sab", "zi"]], ["limon", "🍋", ["Li", "mon"]], ["quyosh", "☀️", ["Qu", "yosh"]],
+  ["yulduz", "⭐", ["Yul", "duz"]], ["mushuk", "🐱", ["Mu", "shuk"]], ["quyon", "🐰", ["Qu", "yon"]],
+  ["kalit", "🔑", ["Ka", "lit"]], ["zebra", "🦓", ["Zeb", "ra"]],
+  // 3 bo'g'in
+  ["mashina", "🚗", ["Ma", "shi", "na"]], ["raketa", "🚀", ["Ra", "ke", "ta"]],
+  ["pomidor", "🍅", ["Po", "mi", "dor"]], ["qurbaqa", "🐸", ["Qur", "ba", "qa"]],
+  ["kapalak", "🦋", ["Ka", "pa", "lak"]], ["chumoli", "🐜", ["Chu", "mo", "li"]],
+  ["avtobus", "🚌", ["Av", "to", "bus"]], ["telefon", "📱", ["Te", "le", "fon"]],
+  ["kartoshka", "🥔", ["Kar", "tosh", "ka"]], ["samolyot", "✈️", ["Sa", "mo", "lyot"]],
+  // 4 bo'g'in
+  ["velosiped", "🚲", ["Ve", "lo", "si", "ped"]], ["televizor", "📺", ["Te", "le", "vi", "zor"]]
+].map(([id, emoji, syl]) => ({ id, emoji, syl, word: syl.join("").replace(/^./, (c) => c.toUpperCase()) }));
+
+addGroup("So'z va bo'g'in", [
+  ["syl_count_q", "Bu so'zda nechta bo'g'in bor? Qarsak chalib sana!"],
+  ["syl_build_q", "Bo'g'inlardan so'zni yig'!"],
+  ...SYLLABLE_WORDS.map((w) => ["word_" + w.id, w.word + "."]),
+  ...SYLLABLE_WORDS.map((w) => ["sylls_" + w.id, w.syl.join("... ") + ". " + w.word + "."])
+]);
+
 // ---------- Ketma-ketlik (naqsh) ----------
 const PATTERN_SETS = [
   ["🔴", "🔵", "🟢", "🟡"],

@@ -188,7 +188,7 @@ const LESSONS = [
       "O'yin «Nechta qarsak?»: tarbiyachi so'z aytadi, bolalar bo'g'in sonicha qarsak chaladi.",
       "Birinchi tovush: «Olma qaysi tovush bilan boshlanadi? — O». Bolalar shu tovushga yana so'z topadi.",
       "Dinamik pauza: «Tovushni ushla» — «M» tovushi eshitilsa, bolalar o'tirib oladi.",
-      "Interaktiv mustahkamlash: saytdagi «Birinchi harf» o'yini.",
+      "Interaktiv mustahkamlash: saytdagi «So'z va bo'g'in» (qarsak bilan sanash va bo'g'inlardan so'z yig'ish) hamda «Birinchi harf» o'yinlari.",
       "Yakun: har bir bola o'z ismini bo'g'inlarga ajratib aytadi (Ma-di-na, Sar-dor)."
     ],
     end: "Bolalar bugun o'rgangan so'zlarini eslab aytadilar."
